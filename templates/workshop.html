@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="about">
+  <div class="copy">
+    <h1>{{ page.title }}</h1>
+    <h3>When: {{ page.date }}</h3>
+    {% if page.category == "workshops" %}
+    <h3>Where: <a href="{{ page.extra.location_url }}" target="_blank" alt="{{ page.extra.location_name}}">{{ page.extra.location_name }}</a>, {{ page.extra.city }}, {{ page.extra.country}}</h3>
+    {% endif %}
+    {{ page.content|safe }}
+  </div>
+</div>
+
+<div id="materials">
+  <div class="copy">
+    <h2>Materials</h2>
+  </div>
+</div>
+
+<div id="team">
+  <div id="team" class="copy">
+    <h1>Organizers</h1>
+    <div class="team-container">
+      <div class="team-box">
+        <img class="team-img" src="img/team-anouk.jpg">
+        <div class="team-content">
+          <p>Anouk Ruhaak</p>
+          <p>Github:<a href="//github.com/anoukruhaak" target="_blank">anoukruhaak</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

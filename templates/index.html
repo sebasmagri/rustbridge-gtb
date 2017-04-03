@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="about">
+  <header>
+    <h1>RustBridge</h1>
+  </header>
+  <article>
+    <p>Free and guided workshops in Rust – a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.</p>
+    <p>Our events are aimed at people who are underrepresented in technology and offer the opportunity to learn within a friendly, safe and sometimes fun environment.</p>
+      <p>We do this by providing rewarding learning experiences, building helpful tools as well as materials and gathering a group of awesome humans.</p>
+      <p>RustBridge is a project by the Rust Language Community Team.</p>
+  </article>
+</section>
+
+<section class="workshops">
+  <header>
+    <h1>Upcoming Workshops</h1>
+  </header>
+  <div>
+    {% for workshop in pages %}
+    {% if workshop.category == "workshops" %}
+    <section class="workshop">
+      <header>
+        <div class="workshop-img">
+          <img src="{{ workshop.extra.image }}">
+        </div>
+        <p><strong>Where:</strong> <a href="{{ workshop.extra.location_url }}" target="_blank" alt="{{ workshop.extra.location_name}}">{{ workshop.extra.location_name }}</a>, {{ workshop.extra.city }}, {{ workshop.extra.country}}</p>
+        <p><strong>When:</strong> {{ workshop.date }}</p>
+      </header>
+      <article>
+        {{ workshop.content|safe }}
+        <br/>
+        <a href="{{ workshop.permalink }}">See more...</a>
+      </article>
+    </section>
+    {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- To add a new member to the team, add a new post to content with category = "member" -->
+<section class="team">
+  <header>
+    <h1>Team</h1>
+  </header>
+  <div class="mentors">
+    {% for mentor in pages %}
+    {% if mentor.category == "mentors" %}
+    <section>
+      <header>
+        <div class="mentor-img">
+          <img src="{{ mentor.extra.image }}">
+        </div>
+        <p>{{ mentor.title }}</p>
+      </header>
+      <p><strong>GitHub:</strong> <a href="//github.com/{{ mentor.extra.github }}" target="_blank">{{ mentor.extra.github }}</a></p>
+    </section>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- <div id="materials">
+  <div class="copy">
+    <h2>Materials</h2>
+  </div>
+</div>
+-->
+
+<section class="coc">
+  <header>
+    <h1>Code of Conduct</h1>
+  </header>
+  <article>
+    <ul>
+      <li>We are committed to providing a friendly, safe and welcoming environment for all, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, nationality, or other similar characteristic.</li>
+      <li>On IRC, please avoid using overtly sexual nicknames or other nicknames that might detract from a friendly, safe and welcoming environment for all.</li>
+      <li>Please be kind and courteous. There’s no need to be mean or rude.</li>
+      <li>Respect that people have differences of opinion and that every design or implementation choice carries a trade-off and numerous costs. There is seldom a right answer.</li>
+      <li>Please keep unstructured critique to a minimum.
+        If you have solid ideas you want to experiment with, make a fork and see how it works.</li>
+      <li>We will exclude you from interaction if you insult, demean or harass anyone.
+        That is not welcome behaviour. We interpret the term “harassment” as including the definition in the Citizen Code of Conduct; if you have any lack of clarity about what might be included in that concept, please read their definition.
+        In particular, we don’t tolerate behavior that excludes people in socially marginalized groups.</li>
+      <li>Private harassment is also unacceptable. No matter who you are, if you feel you have been or are being harassed or made uncomfortable by a community member, please contact one of the channel ops or any of the Rust moderation team immediately.
+        Whether you’re a regular contributor or a newcomer, we care about making this community a safe place for you and we’ve got your back.</li>
+      <li>Likewise any spamming, trolling, flaming, baiting or other attention-stealing behaviour is not welcome.</li>
+    </ul>
+    <h2>Moderation</h2>
+    <p>These are the policies for upholding our community’s standards of conduct.
+      If you feel that a thread needs moderation, please contact the <a href="//www.rust-lang.org/en-US/team.html" target="_blank" alt="Rust Moderation Team">Rust moderation team</a>.</p>
+    <ul>
+      <li>Remarks that violate the Rust standards of conduct, including hateful, hurtful, oppressive, or exclusionary remarks, are not allowed. (Cursing is allowed, but never targeting another user, and never in a hateful manner.)</li>
+      <li>Remarks that moderators find inappropriate, whether listed in the code of conduct or not, are also not allowed.</li>
+      <li>Moderators will first respond to such remarks with a warning.</li>
+      <li>If the warning is unheeded, the user will be “kicked,” i.e., kicked out of the communication channel to cool off.</li>
+      <li>If the user comes back and continues to make trouble, they will be banned, i.e., indefinitely excluded.</li>
+      <li>Moderators may choose at their discretion to un-ban the user if it was a first offense and they offer the offended party a genuine apology.</li>
+      <li>If a moderator bans someone and you think it was unjustified, please take it up with that moderator, or with a different moderator, in private. Complaints about bans in-channel are not allowed.</li>
+      <li>Moderators are held to a higher standard than other community members. If a moderator creates an inappropriate situation, they should expect less leeway than others.</li>
+    </ul>
+    <p>In the Rust community we strive to go the extra step to look out for each other.
+      Don’t just aim to be technically unimpeachable, try to be your best self.
+      In particular, avoid flirting with offensive or sensitive issues, particularly if they’re off-topic; this all too often leads to unnecessary fights, hurt feelings, and damaged trust; worse, it can drive people away from the community entirely.
+      And if someone takes issue with something you said or did, resist the urge to be defensive.
+      Just stop doing what it was they complained about and apologize.
+      Even if you feel you were misinterpreted or unfairly accused, chances are good there was something you could’ve communicated better — remember that it’s your responsibility to make your fellow Rustaceans comfortable.</p>
+    </br>
+    <p>
+      Everyone wants to get along and we are all here first and foremost because we want to talk about cool technology. You will find that people will be eager to assume good intent and forgive as long as you earn their trust.
+      The enforcement policies listed above apply to all official Rust venues; including official IRC channels (#rust, #rust-internals, #rust-tools, #rust-libs, #rustc, #rust-beginners, #rust-docs, #rust-community, #rust-lang, and #cargo); GitHub repositories under rust-lang, rust-lang-nursery, and rust-lang-deprecated; and all forums under rust-lang.org (users.rust-lang.org, internals.rust-lang.org). For other projects adopting the Rust Code of Conduct, please contact the maintainers of those projects for enforcement. If you wish to use this code of conduct for your own project, consider explicitly mentioning your moderation policy or making a copy with your own moderation policy so as to avoid confusion.
+      Adapted from the <a href="//blog.izs.me/post/30036893703/policy-on-trolling" target="_blank">Node.js Policy on Trolling</a> as well as the <a href="//contributor-covenant.org/version/1/3/0/" target="_blank">Contributor Covenant v1.3.0.</a>
+    </p>
+  </article>
+</section>
+
+<section class="news">
+  <header>
+    <h1>This week in Rust</h1>
+  </header>
+  <article>
+    <header>
+      <h4>Handpicked Rust updates, delivered to your inbox. Stay up to date with events, learning resources, and recent developments in Rust community.</h4>
+    </header>
+    <form action="//this-week-in-rust.us11.list-manage.com/subscribe/post?u=fd84c1c757e02889a9b08d289&amp;id=0ed8b72485" method="post" novalidate>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <input type="email" name="EMAIL" value="Enter your email" />
+      <input type="submit" name="subscribe" value="Subscribe!" />
+      <p>Receive a weekly newsletter, every Tuesday. Easy to unsubscribe and no spam, promise.</p>
+    </form>
+  </article>
+</section>
+
+{% endblock content %}

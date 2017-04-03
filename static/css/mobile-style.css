@@ -1,0 +1,221 @@
+/* Base elements */
+
+html, body {
+  background: snow;
+  font-family: 'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  color: black;
+  font-weight: normal;
+  text-align: center;
+}
+
+h2 {
+  color: black;
+  font-weight: normal;
+  text-align: center;
+}
+
+h3 {
+  color: snow;
+  font-weight: normal;
+  text-align: center;
+}
+
+h3 span { color: black; }
+
+h4 {
+  color: black;
+  font-weight: normal;
+  text-align: left;
+}
+
+span { color: #23d2af; }
+
+a {
+  color: #23d2af;
+  text-decoration: none;
+}
+
+/* Page sections */
+
+.wrapper > header {
+  background: snow;
+  border-bottom: 4px solid black;
+  text-align: center;
+  width: 100%;
+}
+
+.wrapper > header .logo {
+    width: 100%;
+}
+
+.wrapper > header .logo img {
+  display: block;
+  height: 200px;
+  margin: 0 auto;
+  width: auto;
+}
+
+nav {
+  display: none;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav a {
+  margin: 15px 20px 0 20px;
+  padding-bottom: 15px;
+  text-decoration: none;
+}
+
+nav .nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+nav a:hover, nav .active a {
+  border-bottom: 4px solid black;
+  color: black;
+}
+
+nav a {
+  color: #23d2af;
+  font-size: 15pt;
+  line-height: 25pt;
+}
+
+section {
+  margin-bottom: 1rem;
+  padding: 5vh 1rem;
+}
+
+section p {
+  color: snow;
+  text-align: center;
+}
+
+/* About section */
+.about {
+  background: #23D2AF;
+  background: rgba(35,210,175,1);
+  background: -moz-linear-gradient(top, rgba(35,210,175,1) 0%, rgba(145,232,215,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(35,210,175,1)), color-stop(100%, rgba(145,232,215,1)));
+  background: -webkit-linear-gradient(top, rgba(35,210,175,1) 0%, rgba(145,232,215,1) 100%);
+  background: -o-linear-gradient(top, rgba(35,210,175,1) 0%, rgba(145,232,215,1) 100%);
+  background: -ms-linear-gradient(top, rgba(35,210,175,1) 0%, rgba(145,232,215,1) 100%);
+  background: linear-gradient(to bottom, rgba(35,210,175,1) 0%, rgba(145,232,215,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23d2af', endColorstr='#91e8d7', GradientType=0 );
+}
+
+/* Workshops */
+
+.workshops {
+  background: rgba(145,232,215,1);
+  background: -moz-linear-gradient(top, rgba(145,232,215,1) 0%, rgba(233,250,247,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(145,232,215,1)), color-stop(100%, rgba(233,250,247,1)));
+  background: -webkit-linear-gradient(top, rgba(145,232,215,1) 0%, rgba(233,250,247,1) 100%);
+  background: -o-linear-gradient(top, rgba(145,232,215,1) 0%, rgba(233,250,247,1) 100%);
+  background: -ms-linear-gradient(top, rgba(145,232,215,1) 0%, rgba(233,250,247,1) 100%);
+  background: linear-gradient(to bottom, rgba(145,232,215,1) 0%, rgba(233,250,247,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91e8d7', endColorstr='#e9faf7', GradientType=0 );
+}
+
+.workshop {
+  background: snow;
+}
+
+.workshop > header > p {
+  color: black;
+  margin: 0.25rem 0;
+}
+
+.workshop-img {
+  width: 100%;
+}
+
+.workshop-img > img {
+  display: block;
+  margin: 0 auto;
+  max-height: 200px;
+  width: auto;
+}
+
+.workshop article p {
+  color: black;
+}
+
+
+/* Members */
+
+.team {
+  background: #E9FAF7;
+  background: rgba(233,250,247,1);
+}
+
+.mentors > section {
+  background: snow;
+}
+
+.mentor-img img {
+  max-width: 150px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.mentors > section > p, .mentors > section > header > p {
+  color: black;
+}
+
+/* Code of conduct */
+
+.coc {
+  background: #E9FAF7;
+  background: rgba(233,250,247,1);
+}
+
+.coc > article > p {
+  color: black;
+}
+
+/* News */
+
+.news {
+  background: #E9FAF7;
+  background: rgba(233,250,247,1);
+}
+
+.news form {
+  text-align: center;
+}
+
+.news input {
+  font-size: 15pt;
+  line-height: 25pt;
+  text-align: center;
+  margin: 20px 0;
+  max-width: 100%;
+}
+
+.news input[name=subscribe] {
+  background: #23d2af;
+  border: none;
+  color: snow;
+  height: 80px;
+  width: 200px;
+}
+
+.news input[name=EMAIL]  {
+  background: snow;
+  border: 4px solid #23d2af;
+  color: grey;
+  height: 72px;
+  width: 400px;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div id="about">
+    <div class="mentor-image">
+      <img alt="{{ page.title }}" src="{{ page.extra.image }}"/>
+    </div>
+    <div class="mentor-title">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <div class="mentor-ssnn">
+      <p>GitHub: <a href="//github.com/{{ page.extra.github }}" target="_blank">{{ page.extra.github }}</a></p>
+      <p>Twitter: <a href="//twitter.com/{{ page.extra.twitter }}" target="_blank">{{ page.extra.twitter }}</a></p>
+    </div>
+  </div>
+
+{% endblock content %}
