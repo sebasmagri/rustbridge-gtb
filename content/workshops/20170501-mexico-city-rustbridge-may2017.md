@@ -11,7 +11,7 @@ location_url = "https://twitter.com/nearsoft"
 location_name = "Nearsoft"
 city = "Ciudad de México"
 country = "México"
-image = "img/rustfest.png"
+image = "/img/rustfest.png"
 +++
 
 

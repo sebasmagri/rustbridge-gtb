@@ -11,10 +11,10 @@ location_url = "https://twitter.com/mozilla"
 location_name = "Mozilla"
 city = "San Francisco"
 country = "US"
-image = "img/rustfest.png"
+image = "/img/rustfest.png"
 +++
 
 
 The very first RustBridge in Bay Area: a hands-on workshop to introduce Rust to beginners with little prior programming experience.
 
-Hosted by the @rustlang_mx herd.
+Hosted by the @rustlang_bayarea herd.

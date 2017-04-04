@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block pageclass %}index{% endblock pageclass %}
 
+{% block content %}
 <section class="about">
   <header>
     <h1>RustBridge</h1>
@@ -26,14 +27,18 @@
         <div class="workshop-img">
           <img src="{{ workshop.extra.image }}">
         </div>
-        <p><strong>Where:</strong> <a href="{{ workshop.extra.location_url }}" target="_blank" alt="{{ workshop.extra.location_name}}">{{ workshop.extra.location_name }}</a>, {{ workshop.extra.city }}, {{ workshop.extra.country}}</p>
-        <p><strong>When:</strong> {{ workshop.date }}</p>
       </header>
-      <article>
-        {{ workshop.content|safe }}
-        <br/>
-        <a href="{{ workshop.permalink }}">See more...</a>
-      </article>
+      <div class="workshop-content">
+        <div class="workshop-meta">
+          <p><strong>Where:</strong> <a href="{{ workshop.extra.location_url }}" target="_blank" alt="{{ workshop.extra.location_name}}">{{ workshop.extra.location_name }}</a>, {{ workshop.extra.city }}, {{ workshop.extra.country}}</p>
+          <p><strong>When:</strong> {{ workshop.date }}</p>
+        </div>
+        <article>
+          {{ workshop.content|safe }}
+          <br/>
+          <a href="{{ workshop.permalink }}">See more...</a>
+        </article>
+      </div>
     </section>
     {% endif %}
     {% endfor %}
@@ -42,14 +47,13 @@
 </section>
 
 {# To add a new member to the team, add a new post to content with category = "member" #}
-<section class="team">
+<section id="team" class="team">
   <header>
     <h1>Team</h1>
   </header>
   <div class="mentors">
     {% for mentor in pages %}
-    {# FIXME: this shouldn't work but it does. It should be changed to pages | sclice above but it's not working on tera atm #}
-    {% if mentor.category == "mentors" and loop.index0 < 3 %}
+    {% if mentor.category == "mentors" %}
     <section>
       <header>
         <div class="mentor-img">
@@ -61,9 +65,6 @@
     </section>
     {% endif %}
     {% endfor %}
-    <p>
-      <a href="/mentors/">See all the mentors...</a>
-    </p>
   </div>
 </section>
 

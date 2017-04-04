@@ -9,7 +9,7 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="/img/rust-logo-blk.ico">
 
-  <title>RustBridge</title>
+  <title>RustBridge{% block title %}{% endblock title %}</title>
   <!-- General CSS -->
   <link rel="stylesheet" type="text/css" href="/css/mobile-style.css">
   <!-- Google Font -->
@@ -18,7 +18,7 @@
 
 <body>
 
-  <div class="wrapper">
+  <div class="wrapper {% block pageclass %}{% endblock pageclass %}">
     <header>
       <div class="logo">
         <a href="/" title="RustBridge">
@@ -28,7 +28,7 @@
       
       <nav>
         <a href="/workshops">Workshops</a>
-        <a href="/mentors">Mentors</a>
+        <a href="/#team">Mentors</a>
         <a href="https://community.rs/rustbridge/">Guides</a>
         <a href="https://blog.community.rs">News</a>
         <a href="https://www.rust-lang.org/en-US/conduct.html">Conduct</a>
@@ -44,5 +44,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <!-- overlay script -->
   <script type="text/javascript" src="/js/activeAnchor.js"></script>
+  {% block scripts %}
+  {% endblock scripts %}
 </body>
 </html>

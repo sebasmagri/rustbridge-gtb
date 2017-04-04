@@ -1,7 +1,90 @@
 {% extends "base.html" %}
 
 {% block content %}
-<pre>
-  {{ __tera_context }}
-</pre>
+<section class="workshops">
+  <header>
+    <h1>Upcoming Workshops</h1>
+  </header>
+  <div id="upcoming_workshops"></div>
+</section>
+
+<section class="workshops">
+  <header>
+    <h1>Past Workshops</h1>
+  </header>
+  <div id="past_workshops"></div>
+</section>
 {% endblock content %}
+
+{% block scripts %}
+<script async defer>
+  window.onload = function () {
+    window.__workshops = [
+    {% for workshop in section.pages %}
+    {% if workshop.category == "workshops" %}
+      {
+        date: Date.parse("{{ workshop.date | date }}"),
+        image: "{{ workshop.extra.image | safe }}",
+        permalink: "{{ workshop.permalink }}",
+        content: window.atob("{{ workshop.content | base64encode }}"),
+        location: {
+          url: "{{ workshop.extra.location_url | safe }}",
+          name: "{{ workshop.extra.location_name }}",
+          city: "{{ workshop.extra.city }}",
+          country: "{{ workshop.extra.country }}"
+        }
+      },
+      {% endif %}
+      {% endfor %}
+    ];
+
+    var activeWorkshops = document.getElementById("upcoming_workshops"),
+        activeWorkshopsCount = 0,
+        pastWorkshops = document.getElementById("past_workshops")
+        pastWorkshopsCount = 0,
+        now = Date.now();
+
+    window.__workshops.forEach(function (workshop) {
+      var workshopHtml = '<section class="workshop">' +
+        '<header>' +
+          '<div class="workshop-img">' +
+            '<img src="' + workshop.image + '">' +
+          '</div>' +
+        '</header>' +
+        '<div class="workshop-content">' +
+          '<div class="workshop-meta">' +
+            '<p>' +
+              '<strong>Where:</strong> ' +
+              '<a href="' + workshop.location.url + '" target="_blank" alt="' + workshop.location.name +'">' + workshop.location.name + '</a>, ' +
+              workshop.location.city + ', ' + workshop.location.country +
+            '</p>' +
+            '<p><strong>When:</strong> ' + Date(workshop.date).toLocaleString() + '</p>' +
+          '</div>' +
+          '<article>' +
+            workshop.content +
+            '<br/>' +
+            '<a href="' + workshop.permalink + '">See more...</a>' +
+          '</article>' +
+        '</div>' +
+      '</section>';
+
+      if (workshop.date >= now) {
+        activeWorkshopsCount += 1;
+        activeWorkshops.insertAdjacentHTML('beforeend', workshopHtml);
+      } else {
+        pastWorkshopsCount += 1;
+        pastWorkshops.insertAdjacentHTML('beforeend', workshopHtml);
+      }
+    });
+
+    if (activeWorkshopsCount === 0) {
+      activeWorkshops.insertAdjacentHTML('afterbegin', '<strong>There are no upcoming workshops at the moment.</strong>');
+    }
+
+    if (pastWorkshopsCount === 0) {
+      pastWorkshops.parentNode.removeChild(pastWorkshops);
+    }
+
+  };
+</script>
+{% endblock scripts %}
