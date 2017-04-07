@@ -24,7 +24,7 @@
     {% if workshop.category == "workshops" %}
       {
         date: Date.parse("{{ workshop.date | date }}"),
-        image: "{{ workshop.extra.image | safe }}",
+        image: "{{ config.base_url }}/{{ workshop.extra.image | safe }}",
         permalink: "{{ workshop.permalink }}",
         content: window.atob("{{ workshop.content | base64_encode }}"),
         location: {

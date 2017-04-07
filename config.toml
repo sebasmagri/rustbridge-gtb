@@ -1,6 +1,6 @@
 title = "RustBridge"
 # replace the url below with yours
-base_url = "https://rustbridge.com"
+base_url = "https://sebasmagri.github.io/rustbridge-gtb/"
 
 [extra]
 # Put all your custom variables here

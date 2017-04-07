@@ -25,7 +25,7 @@
     <section class="workshop">
       <header>
         <div class="workshop-img">
-          <img src="{{ workshop.extra.image }}">
+          <img src="{{ config.base_url }}/{{ workshop.extra.image }}">
         </div>
       </header>
       <div class="workshop-content">
@@ -57,11 +57,11 @@
     <section>
       <header>
         <div class="mentor-img">
-          <img src="{{ mentor.extra.image }}">
+          <img src="{{ config.base_url }}/{{ mentor.extra.image }}">
         </div>
         <p>{{ mentor.title }}</p>
       </header>
-      <p><strong>GitHub:</strong> <a href="//github.com/{{ mentor.extra.github }}" target="_blank">{{ mentor.extra.github }}</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/{{ mentor.extra.github }}" target="_blank">{{ mentor.extra.github }}</a></p>
     </section>
     {% endif %}
     {% endfor %}
